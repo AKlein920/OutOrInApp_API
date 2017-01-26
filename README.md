@@ -2,12 +2,12 @@
 
 ## User Stories
 
-- [ ] A user should be able to sign up, log in, and log out
+- [ ] When a user accesses the page, they should be prompted for their location (city/state format OR zip code) AND a style of cuisine (i.e. 'Chinese') OR a keyword (i.e. 'guacamole', 'chicken', etc.).
 
-- [ ] When a user accesses the site, they should be prompted to enter location information (either 'New York, NY' OR zip code - to be determined later)
+- [ ] The user will be returned search results matching their query - the Yelp API will query for restaurants near the user that match the search criteria WHILE the bigOven API queries for recipes matching the search criteria
 
-- [ ] Upon entering the location info, a user should be returned search results from the Yelp API of coffeeshops near them that are good for working ** (to be defined) **
+- [ ] Yelp view: The user will see: restaurant name, phone number, location, image and hours 
 
-- [ ] The user should be able to see at least: biz name, location (cross streets if applicable), hours, website/url (if applicable), representative photo
+- [ ] bigOven view: The user will see: recipe title, servings, ingredients (if < 5; if > 5 show '5+ ingredients'), photo, prep/cook time, url
 
-- [ ] A user should be able to 'bookmark' their 'places' (API info to be saved in db)
+- [ ] The user will be able to add places and recipes as bookmarks
