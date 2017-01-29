@@ -8,7 +8,6 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins '*'
-<<<<<<< HEAD:out_or_in_app_api/config/initializers/cors.rb
   # replace * with angular path
 
     resource '*',
@@ -18,8 +17,6 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
 
   allow do
     origins '*'
-=======
->>>>>>> master:outorin_app_api/config/initializers/cors.rb
 
     resource '*',
       headers: :any,
