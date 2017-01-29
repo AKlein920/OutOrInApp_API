@@ -5,10 +5,10 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
+
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins '*'
-  # replace * with angular path
 
     resource '*',
       headers: :any,
@@ -19,6 +19,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     origins '*'
 
     resource '*',
+    # change to frontend heroku link
       headers: :any,
       methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
