@@ -1,9 +1,9 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :update, :destroy]
+  # before_action :set_recipe, only: [:show, :update, :destroy]
 
   # GET /recipes
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.where(category_id: params[:category_id])
 
     render json: @recipes
   end
@@ -15,12 +15,13 @@ class RecipesController < ApplicationController
 
   # POST /recipes
   def create
-    @recipe = Recipe.new(recipe_params)
+    recipe = Recipe.new(recipe_params)
+    recipe.category_id = params[:category_id]
 
-    if @recipe.save
-      render json: @recipe, status: :created, location: @recipe
+    if recipe.save
+      render json: recipe, status: 200
     else
-      render json: @recipe.errors, status: :unprocessable_entity
+      render json: recipe.errors, status: :unprocessable_entity
     end
   end
 
@@ -35,17 +36,18 @@ class RecipesController < ApplicationController
 
   # DELETE /recipes/1
   def destroy
-    @recipe.destroy
+    recipe = Recipe.where(category_id: params[:category_id], id: params[:id])
+    recipe.destroy(params[:id])
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
-      @recipe = Recipe.find(params[:id])
-    end
+    # def set_recipe
+    #   @recipe = Recipe.find(params[:id])
+    # end
 
     # Only allow a trusted parameter "white list" through.
     def recipe_params
-      params.require(:recipe).permit(:name, :url, :img_url, :category_id)
+      params.require(:recipe).permit(:name, :url, :img_url)
     end
 end
