@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes
   def index
-    @recipes = Recipe.where(category_id: params[:category_id])
+    @recipes = Recipe.where(user_id: params[:user_id])
 
     render json: @recipes
   end
@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
   # POST /recipes
   def create
     recipe = Recipe.new(recipe_params)
-    recipe.category_id = params[:category_id]
+    recipe.user_id = params[:user_id]
 
     if recipe.save
       render json: recipe, status: 200
@@ -36,7 +36,7 @@ class RecipesController < ApplicationController
 
   # DELETE /recipes/1
   def destroy
-    recipe = Recipe.where(category_id: params[:category_id], id: params[:id])
+    recipe = Recipe.where(user_id: params[:user_id], id: params[:id])
     recipe.destroy(params[:id])
   end
 
