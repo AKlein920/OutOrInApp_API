@@ -25,23 +25,25 @@ development:
   <<: *default
   database: outorin_app_api_development
 
+
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: outorin_app_api
+  username: <%= ENV['DB_USER'] %>
 
   # The password associated with the postgres role (username).
-  #password:
+  password:<%= ENV['DB_PASSWORD'] %>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  #host: localhost
+  host=<%= ENV['DB_HOST'] %>
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  port: 5432
+  sslmode=require
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -57,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: outorin_app_api_test
+  database: <%= ENV['DB_NAME'] %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -76,10 +78,10 @@ test:
 # You can use this database configuration with:
 #
 #   production:
-#     url: <%= ENV['DATABASE_URL'] %>
+    url: <%= ENV['DB_URL'] %>
 #
 production:
   <<: *default
-  database: outorin_app_api_production
-  username: outorin_app_api
-  password: <%= ENV['OUTORIN_APP_API_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
