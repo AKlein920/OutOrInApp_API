@@ -12,7 +12,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors, :debug => true,
 
     resource '*',
       headers: :any,
-      methods: [:get, :post, :update, :delete, :options, :head]
+      methods: [:get, :post, :options, :head]
   end
 
   allow do
