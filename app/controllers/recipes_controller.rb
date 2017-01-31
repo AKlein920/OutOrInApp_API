@@ -27,10 +27,13 @@ class RecipesController < ApplicationController
 
   # PATCH/PUT /recipes/1
   def update
-    if @recipe.update(recipe_params)
-      render json: @recipe
+    recipe = Recipe.where(user_id: params[:user_id], id: params[:id])
+    recipe.update(recipe_params)
+
+    if recipe.update(recipe_params)
+      render json: recipe
     else
-      render json: @recipe.errors, status: :unprocessable_entity
+      render json: recipe.errors, status: :unprocessable_entity
     end
   end
 
@@ -48,6 +51,6 @@ class RecipesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def recipe_params
-      params.require(:recipe).permit(:name, :url, :img_url)
+      params.require(:recipe).permit(:name, :url, :img_url, :ingredients, :directions, :difficulty, :meal, :serving_size, :cuisine, :time_to_make)
     end
 end
