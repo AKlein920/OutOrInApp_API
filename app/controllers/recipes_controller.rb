@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  # before_action :set_recipe, only: [:show, :update, :destroy]
+  before_action :set_recipe, only: [:show, :update, :destroy]
 
   # GET /recipes
   def index
