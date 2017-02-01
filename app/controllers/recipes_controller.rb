@@ -10,7 +10,8 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1
   def show
-    render json: @recipe
+    recipe = Recipe.where(user_id: params[:user_id], id: params[:id])
+    render json: recipe
   end
 
   # POST /recipes
