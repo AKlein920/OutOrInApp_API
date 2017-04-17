@@ -9,7 +9,7 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors, :debug => true, :logger => (-> { Rails.logger }) do
 
   allow do
-    origins 'http://localhost:3001', 'https://out-or-in-app--frontend.herokuapp.com'
+    origins 'http://localhost:3001', 'https://rcp--app.herokuapp.com/'
 
     resource '*',
       headers: :any,
